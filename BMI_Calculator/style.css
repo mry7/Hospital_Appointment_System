@@ -1,0 +1,524 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body Styles */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #e2c1a5;
+}
+
+/* Header Section Styles */
+header {
+  background: linear-gradient(to right, #EC407A, #f18bad);
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-menu {
+  display: flex;
+}
+
+.nav-menu li {
+  margin-right: 20px;
+  list-style: none;
+}
+
+.nav-menu li:last-child {
+  margin-right: 0;
+}
+
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.nav-menu li a:hover {
+  color: #f5ebeb;
+}
+
+/* Capsule Styles */
+.capsul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Box Styles */
+.box {
+  width: 500px;
+  background: #E0E0E0;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 2px 2px 20px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Heading Styles */
+h1 {
+  color: rgb(0, 0, 0, 0.7);
+  font-weight: bold;
+  font-size: 25px;
+  padding: 30px 0;
+}
+
+/* Content Styles */
+.content {
+  padding: 0 37px;
+}
+
+/* Input Styles */
+.input {
+  background: #fff;
+  box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 15px 0;
+  margin-bottom: 20px;
+}
+
+.input label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.input input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #F06292;
+  width: 50%;
+  text-align: center;
+  font-size: 25px;
+  font-family: "Nunito", sans-serif;
+}
+
+/* InputW Styles */
+.inputW {
+  background: #fff;
+  box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.inputW label {
+  display: block;
+  font-size: 1em;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.inputW input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #F06292;
+  width: 50%;
+  text-align: center;
+  font-size: 28px;
+  font-family: "Nunito", sans-serif;
+}
+
+/* InputH Styles */
+.inputH {
+  background: #fff;
+  box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.inputH label {
+  display: block;
+  font-size: 1em;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.inputH input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #F06292;
+  width: 50%;
+  text-align: center;
+  font-size: 28px;
+  font-family: "Nunito", sans-serif;
+}
+
+/* Button Styles */
+button.calculate {
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  color: #fff;
+  background: rgb(231, 63, 119);
+  font-size: 15px;
+  border-radius: 20px;
+  padding: 12px 0;
+  width: 50%;
+  outline: none;
+  border: none;
+  transition: all 0.5s;
+}
+
+button.calculate:hover {
+  background: #F48FB1;
+}
+
+/* Result Styles */
+.result {
+  padding: 7px 20px;
+}
+
+.result p {
+  font-weight: 600;
+  font-size: 17px;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.result #result {
+  font-size: 18px;
+  font-weight: 900;
+  color: #EC407A;
+  background-color: #ffffff;
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 55px;
+  margin-bottom: 25px;
+}
+
+/* Gender Styles */
+.gender {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  background: #fff;
+  box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+/* Stil için Radio */
+.gender .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 7px;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Tarayıcının varsayılan radio butonunu gizle */
+.gender .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Özel bir radio butonu oluştur */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* Fare üzerine gelindiğinde gri arka plan ekleyin */
+.gender .container:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* Radio butonu işaretlendiğinde mavi bir arka plan ekleyin */
+.gender .container input:checked~.checkmark {
+  background-color: #EC407A;
+}
+
+/* Göstergeyi (nokta/daireyi - işaretlenmediğinde gizli) oluşturun */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Göstergeyi (nokta/daire) işaretlendiğinde gösterin */
+.gender .container input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Göstergeyi (nokta/daire) stili */
+.gender .container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* Radio için Stilin Sonu */
+
+/* Genişlik ve Yükseklik (Width and Height) Container */
+.containerHW {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Modal (Arka Plan) */
+.modal {
+  display: none;
+  /* Varsayılan olarak gizli */
+  position: fixed;
+  /* Sabit kal */
+  z-index: 1;
+  /* En üstte dur */
+  padding-top: 100px;
+  /* Kutunun konumu */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Tam genişlik */
+  height: 100%;
+  /* Tam yükseklik */
+  overflow: auto;
+  /* Gerekiyorsa kaydırmayı etkinleştir */
+  background-color: rgb(0, 0, 0);
+  /* Yedek renk */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Saydam siyah */
+  padding-top: 300px;
+}
+
+/* Modal İçeriği */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 600px;
+  border-radius: 10px;
+  box-shadow: #393c76 -1px 2px 2px 1px;
+}
+
+#modalText {
+  padding-top: 8px;
+  padding-right: 5px;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  color: rgb(24, 23, 23);
+}
+
+.modal-wrong {
+  border: 2px solid red;
+}
+
+.modal-correct {
+  border: 2px solid green;
+}
+
+/* Kapatma Düğmesi */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.close:hover {
+  color: #d41111;
+}
+
+
+@media (max-width: 700px) {
+
+  .box {
+    width: 380px;
+  }
+
+  .input label {
+
+    font-size: 18px;
+  }
+
+  .inputH label,
+  .inputW label {
+    font-size: 14px;
+  }
+
+  .input input,
+  .inputH input,
+  .inputW input {
+    font-size: 24px;
+  }
+
+  .modal-content {
+
+    width: 380px;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .linkDownload {
+    display: none;
+  }
+}
+
+.show-modal {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  margin-top: -10px;
+  margin-bottom: 7px;
+  padding: 7px 13px;
+  background: #EC407A;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 18px rgba(52, 87, 220, 0.18);
+}
+
+.show-modal:hover {
+  background: #2382f6;
+}
+
+.bottom-sheet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: 0.1s linear;
+}
+
+.bottom-sheet.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bottom-sheet .sheet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  background: #000;
+}
+
+.bottom-sheet .content {
+  width: 100%;
+  position: relative;
+  background: #fff;
+  max-height: 100vh;
+  height: 50vh;
+  max-width: 1150px;
+  padding: 25px 30px;
+  transform: translateY(100%);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+  transition: 0.3s ease;
+}
+
+.bottom-sheet.show .content {
+  transform: translateY(0%);
+}
+
+.bottom-sheet.dragging .content {
+  transition: none;
+}
+
+.bottom-sheet.fullscreen .content {
+  border-radius: 0;
+  overflow-y: hidden;
+}
+
+.bottom-sheet .header {
+  display: flex;
+  justify-content: center;
+}
+
+.header .drag-icon {
+  cursor: grab;
+  user-select: none;
+  padding: 15px;
+  margin-top: -15px;
+}
+
+.header .drag-icon span {
+  height: 4px;
+  width: 40px;
+  display: block;
+  background: #C7D0E1;
+  border-radius: 50px;
+}
+
+.bottom-sheet .body {
+  height: 100%;
+  overflow-y: auto;
+  padding: 15px 0 40px;
+  scrollbar-width: none;
+}
+
+.bottom-sheet .body::-webkit-scrollbar {
+  width: 0;
+}
+
+.bottom-sheet .body h2 {
+  font-size: 1.8rem;
+  color: #EC407A;
+}
+
+.bottom-sheet .body p {
+  margin-top: 20px;
+  font-size: 1.05rem;
+  font-family: Arial, sans-serif;
+  letter-spacing: 1px;
+  text-align: justify;
+  color: rgb(74, 74, 74);
+  word-spacing: 0.5px;
+}
+
+
+
+
+

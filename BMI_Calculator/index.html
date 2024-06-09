@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Beden Kütle İndeksi Hesaplama</title>
+ </head>
+
+<body>
+  <div class="capsul">
+    <div class="container">
+
+      <header>
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="../index.html"> Home </a></li>
+          </ul>
+        </nav>
+      </header>
+      <br>
+
+      <div class="box">
+        <h1>Beden Kütle İndeksisi</h1>
+        <div class="content">
+
+
+          <div class="gender">
+
+            <label class="container">
+              <input type="radio" name="radio" id="m">
+              <p class="text">Erkek</p>
+              <span class="checkmark"></span>
+            </label>
+
+            <label class="container">
+              <input type="radio" name="radio" id="f">
+              <p class="text">Kadın</p>
+              <span class="checkmark"></span>
+            </label>
+
+          </div>
+
+          <div class="containerHW">
+            <div class="inputH">
+              <label for="height">Boy(cm)</label>
+              <input type="number" id="height" required>
+            </div>
+
+            <div class="inputW">
+              <label for="weight">Kilo(kg)</label>
+              <input type="number" id="weight" required>
+            </div>
+
+          
+
+
+          <button class="calculate" id="submit" onclick="calculate();">Hesapla </button>
+        </div>
+        <div class="result">
+          <div id="result">Sonuç</div>
+          <p class="comment"></p>
+        </div>
+
+        <button class="show-modal">Detaylı Bilgi</button>
+        <div class="bottom-sheet">
+          <div class="sheet-overlay"></div>
+          <div class="content">
+            <div class="header">
+              <div class="drag-icon"><span></span></div>
+            </div>
+            <div class="body">
+              <h2>Beden Kütle İndeksi Hakkında Detaylı Bilgiler </h2>
+              <p> Zayıf (Underweight): BMI 19'dan düşükse, kişi zayıf olarak kabul edilir. 
+                Bu durum, kilo eksikliğini ifade edebilir. Sağlıklı bir kilo kazanımı hedeflenmelidir.</p>
+
+             <p> Normal (Normal Weight): BMI 19 ile 24 arasındaysa, kişi normal kilolu olarak kabul edilir. 
+                Bu genellikle sağlıklı bir vücut kitle indeksini yansıtabilir.</p>
+                
+             <p> Normalin Üzerinde (Overweight): BMI 24 ile 29 arasındaysa, kişi kilolu olarak kabul edilir.
+                Bu durum, kilonun sağlıklı sınırların üzerinde olduğunu gösterebilir. Sağlıklı bir yaşam tarzı benimsemek ve kilo kontrolüne dikkat etmek önemlidir.</p>
+                
+              <p>  Şişman (Obese): BMI 30'un üzerindeyse, kişi obez olarak kabul edilir. Obezite, sağlık sorunlarına yol açabilen ciddi bir durumdur. 
+                Sağlık profesyoneliyle konuşarak uygun bir kilo kaybı planı geliştirmek önemlidir.</p>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

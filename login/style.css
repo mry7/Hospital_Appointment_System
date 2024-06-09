@@ -1,0 +1,110 @@
+/* style.css */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(227, 255, 210)
+}
+
+.login-container {
+    background-color: #ece7de;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px; 
+    width: 100%; 
+    box-sizing: border-box; /* padding ve border'ı genişliğe dahil eder */
+    text-align: center;
+    box-shadow: #828387 3px 3px 3px 3px;
+    border: 1px solid #888;
+
+
+
+}
+
+.login-form {
+    margin: 0;
+}
+
+.logo {
+    color: #78947b;
+    font-size: 36px; 
+    text-decoration: none;
+}
+
+.login-form h3 {
+    color: #333;
+    font-size: 24px; 
+    margin-top: 10px;
+}
+
+.box {
+    width: calc(100% - 20px); /* 100%'nin içindeki padding ve border'ı düzeltmek için */
+    padding: 15px; /* Padding artırıldı */
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Remember Me Checkbox Stili */
+.flex input[type="checkbox"] {
+    margin-right: 1px; /* Checkbox ile metin arasındaki boşluğu ayarlar */
+
+}
+
+
+.flex label {
+    font-size: 14px; /* Checkbox metni boyutunu ayarlar */
+    color: #b01414;
+    margin-right: 300px; /* Checkbox ile metin arasındaki boşluğu ayarlar */
+   
+}
+
+/* Forgot Password Bağlantısı Stili */
+.flex a {
+    font-size: 14px;
+    color: #141414;
+    text-decoration: none;
+}
+
+.flex a:hover {
+    text-decoration: underline;
+}
+
+.link-btn {
+    background-color: #78947b;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.link-btn:hover {
+    background-color: #b7d3ba;
+}
+
+/* hesabınız yok mu kısmı */
+.account {
+    margin-top: 20px;
+    color: #777;
+    font-size: 18px;
+}
+
+/* Hemen kaydol kısmı */
+.account a {
+    color: #111212;
+    text-decoration: none;
+}
+
+.account a:hover {
+    text-decoration: underline;
+}
