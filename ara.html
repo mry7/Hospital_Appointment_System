@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasta ve Randevu Bilgileri</title>
+    <link rel="stylesheet" type="text/css" href="ara.css">
+</head>
+<body>
+    <div id="dashboard">
+        <button onclick="formmGosterr('hastamalumatForm')">Hasta Bilgilerini Getir</button>
+        <button onclick="formmGosterr('hastaRndevuuForm')">Hastanın Randevularını Getir</button>
+        <button onclick="formmGosterr('doktorRandevuuForm')">Doktorun Randevularını Getir</button>
+        <button onclick="formmGosterr('raporrForm')">Hastanın Raporlarını Getir</button>
+    </div>
+
+    <div class="form-container" id="hastamalumatForm" style="display: none;">
+        <h1>Hasta Bilgileri</h1>
+        <form>
+            <label for="hastaId">Hasta ID:</label>
+            <input type="text" id="hastaId" name="hastaId">
+            <button type="button" onclick="hastaBilgileriniiAll()">Hasta Bilgilerini Getir</button>
+        </form>
+        <div id="hastaaBilgilerii"></div>
+    </div>
+    
+    <div class="form-container" id="hastaRndevuuForm" style="display: none;">
+        <h1>Hasta Randevuları</h1>
+        <form>
+            <label for="hastaIdRandevu">Hasta ID:</label>
+            <input type="text" id="hastaIdRandevu" name="hastaIdRandevu">
+            <button type="button" onclick="hastaRandevuBilgileriniiAll()">Hastanın Randevularını Getir</button>
+        </form>
+        <div id="randevuBilgileri"></div>
+    </div>
+
+    <div class="form-container" id="doktorRandevuuForm" style="display: none;">
+        <h1>Doktor Randevuları</h1>
+        <form>
+            <label for="doktorId">Doktor ID:</label>
+            <input type="text" id="doktorId" name="doktorId">
+            <button type="button" onclick="doktorRandevuBilgileriniiAll()">Doktorun Randevularını Getir</button>
+        </form>
+        <div id="doktorRandevuBilgileri"></div>
+    </div>
+
+    <div class="form-container" id="raporrForm" style="display: none;">
+        <h1>Hasta Raporları</h1>
+        <form>
+            <label for="hastaIdRapor">Hasta ID:</label>
+            <input type="text" id="hastaIdRapor" name="hastaIdRapor">
+            <button type="button" onclick="raporBilgileriniiAll()">Hastanın Raporlarını Getir</button>
+        </form>
+        <div id="raporBilgileri"></div>
+    </div>
+
+    <script>
+        function formmGosterr(formId) {
+            const forms = document.querySelectorAll('.form-container');
+            forms.forEach(form => {
+                form.style.display = form.id === formId ? 'block' : 'none';
+            });
+        }
+
+
+        function hastaBilgileriniiAll() {
+    // Hasta ID'sini input alanından al
+    var hastaId = document.getElementById("hastaId").value;
+    
+    // Eğer hasta ID'si varsa devam et
+    if (hastaId) {
+        // Yeni bir XMLHttpRequest nesnesi oluştur
+        var iisteekk = new XMLHttpRequest();
+        
+        // GET isteği ile hasta bilgilerini al, asenkron olarak
+        iisteekk.open("GET", "/hastabilgilerii?hastaId=" + hastaId, true);
+        
+        // İstek durumunu kontrol et
+        iisteekk.onreadystatechange = function() {
+            // İstek tamamlandıysa
+            if (iisteekk.readyState == 4) {
+                // İstek başarılı olduysa (HTTP status 200)
+                if (iisteekk.status == 200) {
+                    // Gelen JSON yanıtı parse et
+                    var hastaaBilgilerii = JSON.parse(iisteekk.responseText);
+                    
+                    // Hasta bilgilerini gösterecek olan div'i seç
+                    var bilgilerrDivv = document.getElementById("hastaaBilgilerii");
+                    
+                    // İçeriği hasta bilgileri ile doldur
+                    bilgilerrDivv.innerHTML = "<h2>Hasta Bilgileri</h2>" +
+                                              "<p>Hasta ID: " + hastaaBilgilerii.hastaid + "</p>" +
+                                              "<p>Ad: " + hastaaBilgilerii.ad + "</p>" +
+                                              "<p>Soyad: " + hastaaBilgilerii.soyad + "</p>" +
+                                              "<p>Doğum Tarihi: " + hastaaBilgilerii.dogumtarihi + "</p>" +
+                                              "<p>Cinsiyet: " + hastaaBilgilerii.cinsiyet + "</p>" +
+                                              "<p>Telefon Numarası: " + hastaaBilgilerii.telefonnumarasi + "</p>" +
+                                              "<p>Adres: " + hastaaBilgilerii.adres + "</p>";
+                } else {
+                    // İstek başarısız olursa hata mesajı göster
+                    alert("Hata: " + iisteekk.status);
+                }
+            }
+        };
+        
+        // İsteği gönder
+        iisteekk.send();
+    }
+}
+
+function hastaRandevuBilgileriniiAll() {
+    // Hasta ID'sini input alanından al
+    var hastaIdRandevu = document.getElementById("hastaIdRandevu").value;
+    
+    // Eğer hasta ID'si varsa devam et
+    if (hastaIdRandevu) {
+        // Yeni bir XMLHttpRequest nesnesi oluştur
+        var iisteekk = new XMLHttpRequest();
+        
+        // GET isteği ile hasta randevu bilgilerini al, asenkron olarak
+        iisteekk.open("GET", "/hastarandevulari?hastaId=" + hastaIdRandevu, true);
+        
+        // İstek durumunu kontrol et
+        iisteekk.onreadystatechange = function() {
+            // İstek tamamlandıysa
+            if (iisteekk.readyState == 4) {
+                // İstek başarılı olduysa (HTTP status 200)
+                if (iisteekk.status == 200) {
+                    // Gelen JSON yanıtı parse et
+                    var randevular = JSON.parse(iisteekk.responseText);
+                    
+                    // Randevu bilgilerini gösterecek olan div'i seç
+                    var bilgilerrDivv = document.getElementById("randevuBilgileri");
+                    
+                    // HTML tablosu için başlangıç içeriği oluştur
+                    var HTMLtablosuu = "<h2>Hastanın Randevu Bilgileri</h2><table border='1'><tr><th>Randevu ID</th><th>Randevu Tarihi</th><th>Randevu Saati</th><th>Hasta ID</th><th>Doktor ID</th></tr>";
+                    
+                    // Her bir randevuyu tabloya ekle
+                    randevular.forEach(function(randevuu) {
+                        HTMLtablosuu += "<tr><td>" + randevuu.randevuid + "</td><td>" + randevuu.randevutarihi + "</td><td>" + randevuu.randevusaati + "</td><td>" + randevuu.hastaid + "</td><td>" + randevuu.doktorid + "</td></tr>";
+                    });
+                    
+                    // Tabloyu kapat
+                    HTMLtablosuu += "</table>";
+                    
+                    // İçeriği randevu bilgileri ile doldur
+                    bilgilerrDivv.innerHTML = HTMLtablosuu;
+                } else {
+                    // İstek başarısız olursa hata mesajı göster
+                    alert("Hata: " + iisteekk.status);
+                }
+            }
+        };
+        
+        // İsteği gönder
+        iisteekk.send();
+    }
+}
+
+function doktorRandevuBilgileriniiAll() {
+    // Doktor ID'sini input alanından al
+    var doktorId = document.getElementById("doktorId").value;
+    
+    // Eğer doktor ID'si varsa devam et
+    if (doktorId) {
+        // Yeni bir XMLHttpRequest nesnesi oluştur
+        var iisteekk = new XMLHttpRequest();
+        
+        // GET isteği ile doktorun randevu bilgilerini al, asenkron olarak
+        iisteekk.open("GET", "/doktorrandevulari?doktorId=" + doktorId, true);
+        
+        // İstek durumunu kontrol et
+        iisteekk.onreadystatechange = function() {
+            // İstek tamamlandıysa
+            if (iisteekk.readyState == 4) {
+                // İstek başarılı olduysa (HTTP status 200)
+                if (iisteekk.status == 200) {
+                    // Gelen JSON yanıtı parse et
+                    var randevular = JSON.parse(iisteekk.responseText);
+                    
+                    // Randevu bilgilerini gösterecek olan div'i seç
+                    var bilgilerrDivv = document.getElementById("doktorRandevuBilgileri");
+                    
+                    // HTML tablosu için başlangıç içeriği oluştur
+                    var HTMLtablosuu = "<h2>Doktorun Randevu Bilgileri</h2><table border='1'><tr><th>Randevu ID</th><th>Randevu Tarihi</th><th>Randevu Saati</th><th>Hasta ID</th><th>Doktor ID</th></tr>";
+                    
+                    // Her bir randevuyu tabloya ekle
+                    randevular.forEach(function(randevuu) {
+                        HTMLtablosuu += "<tr><td>" + randevuu.randevuid + "</td><td>" + randevuu.randevutarihi + "</td><td>" + randevuu.randevusaati + "</td><td>" + randevuu.hastaid + "</td><td>" + randevuu.doktorid + "</td></tr>";
+                    });
+                    
+                    // Tabloyu kapat
+                    HTMLtablosuu += "</table>";
+                    
+                    // İçeriği randevu bilgileri ile doldur
+                    bilgilerrDivv.innerHTML = HTMLtablosuu;
+                } else {
+                    // İstek başarısız olursa hata mesajı göster
+                    alert("Hata: " + iisteekk.status);
+                }
+            }
+        };
+        
+        // İsteği gönder
+        iisteekk.send();
+    }
+}
+
+function raporBilgileriniiAll() {
+    // Hasta ID'sini input alanından al
+    var hastaIdRapor = document.getElementById("hastaIdRapor").value;
+    
+    // Eğer hasta ID'si varsa devam et
+    if (hastaIdRapor) {
+        // Yeni bir XMLHttpRequest nesnesi oluştur
+        var iisteekk = new XMLHttpRequest();
+        
+        // GET isteği ile hastanın rapor bilgilerini al, asenkron olarak
+        iisteekk.open("GET", "/raporlarigetir?hastaId=" + hastaIdRapor, true);
+        
+        // İstek durumunu kontrol et
+        iisteekk.onreadystatechange = function() {
+            // İstek tamamlandıysa
+            if (iisteekk.readyState == 4) {
+                // İstek başarılı olduysa (HTTP status 200)
+                if (iisteekk.status == 200) {
+                    // Gelen JSON yanıtı parse et
+                    var raporlar = JSON.parse(iisteekk.responseText);
+                    
+                    // Rapor bilgilerini gösterecek olan div'i seç
+                    var bilgilerrDivv = document.getElementById("raporBilgileri");
+                    
+                    // HTML tablosu için başlangıç içeriği oluştur
+                    var HTMLtablosuu = "<h2>Hastanın Rapor Bilgileri</h2><table border='1'><tr><th>Rapor ID</th><th>Rapor Tarihi</th><th>Rapor İçeriği</th><th>Hasta ID</th></tr>";
+                    
+                    // Her bir raporu tabloya ekle
+                    raporlar.forEach(function(rapor) {
+                        HTMLtablosuu += "<tr><td>" + rapor.raporid + "</td><td>" + rapor.raportarihi + "</td><td>" + rapor.raporicerigi + "</td><td>" + rapor.hastaid + "</td></tr>";
+                    });
+                    
+                    // Tabloyu kapat
+                    HTMLtablosuu += "</table>";
+                    
+                    // İçeriği rapor bilgileri ile doldur
+                    bilgilerrDivv.innerHTML = HTMLtablosuu;
+                } else {
+                    // İstek başarısız olursa hata mesajı göster
+                    alert("Hata: " + iisteekk.status);
+                }
+            }
+        };
+        
+        // İsteği gönder
+        iisteekk.send();
+    }
+}
+
+
+    </script>
+</body>
+</html>

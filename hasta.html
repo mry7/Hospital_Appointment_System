@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasta</title>
+     <link rel="stylesheet" type="text/css" href="hasta.css">
+     
+</head>
+<body>
+  <div id="dashboard">
+    <button onclick="eklee()">Ekle</button>
+    <button onclick="listelee(0)">Listele</button>
+    <button onclick="siilll()">Sil</button> 
+    <button onclick="guncellee()">Güncelle</button>
+  </div>
+
+
+  <div class="form-container" id="form-container">
+    <h1>Hasta Ekle</h1>
+    <form action="/hastaekle" method="post">
+      <label for="hastaid">Hasta ID:</label>
+      <input type="text" id="hastaid" name="hastaid" required><br>
+      <label for="ad">Ad:</label>
+      <input type="text" id="ad" name="ad" required><br>
+      <label for="soyad">Soyad:</label>
+      <input type="text" id="soyad" name="soyad" required><br>
+      <label for="dogumtarihi">Doğum Tarihi:</label>
+      <input type="date" id="dogumtarihi" name="dogumtarihi" required><br>
+      <label for="cinsiyet">Cinsiyet:</label>
+      <input type="text" id="cinsiyet" name="cinsiyet" required><br>
+      <label for="telefonnumarasi">Telefon Numarasi:</label>
+      <input type="text" id="telefonnumarasi" name="telefonnumarasi" required><br>
+      <label for="adres">Adres:</label>
+      <input type="text" id="adres" name="adres" required><br>
+      <button type="submit">Ekle</button>
+    </form>
+  </div>
+
+
+  <div class="form-container" id="delete-form-container" style="display:none;">
+    <h1>Hasta Sil</h1>
+    <form id="hastaSilForm">
+      <label for="hastaId">Hasta ID:</label>
+      <input type="text" id="hastaId" name="hastaId" required><br>
+      <button onclick="hastaaSill(event)">Sil</button>
+    </form>
+  </div>
+
+
+  <div class="form-container" id="update-form-container" style="display:none;">
+    <h1>Hasta Güncelle</h1>
+    <form id="updateForm" action="/update" method="POST">
+      <label for="hastaid">Hasta ID:</label>
+      <input type="text" id="hastaid" name="hastaid"><br><br>
+      
+      <label for="ad">Ad:</label>
+      <input type="text" id="ad" name="ad"><br><br>
+      
+      <label for="soyad">Soyad:</label>
+      <input type="text" id="soyad" name="soyad"><br><br>
+      
+      <label for="dogumtarihi">Doğum Tarihi:</label>
+      <input type="date" id="dogumtarihi" name="dogumtarihi"><br><br>
+      
+      <label for="cinsiyet">Cinsiyet:</label>
+      <input type="text" id="cinsiyet" name="cinsiyet"><br><br>
+
+      <label for="telefonnumarasi">Telefon Numarasi:</label>
+      <input type="text" id="telefonnumarasi" name="telefonnumarasi"><br><br>
+
+      <label for="adres">Adres:</label>
+      <input type="text" id="adres" name="adres"><br><br>
+
+      <button type="submit">Güncelle</button>
+      
+    </form>
+  </div>
+
+
+  <div class="table-container" id="table-container">
+    <!-- Burada doktorlar tablosu olacak -->
+  </div>
+
+
+  <script>
+    async function listelee() {
+      const yaniitt = await fetch('/hastalar');
+      const html = await yaniitt.text();
+      document.getElementById('table-container').innerHTML = html;
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('delete-form-container').style.display = 'none'; 
+      document.getElementById('update-form-container').style.display = 'none';
+    }
+
+    function eklee() {
+      document.getElementById('form-container').style.display = 'block';
+      document.getElementById('table-container').innerHTML = '';
+      document.getElementById('delete-form-container').style.display = 'none'; 
+      document.getElementById('update-form-container').style.display = 'none';
+    }
+
+    function siilll() {
+      document.getElementById('delete-form-container').style.display = 'block';
+      document.getElementById('table-container').innerHTML = '';
+      document.getElementById('form-container').style.display = 'none'; 
+      document.getElementById('update-form-container').style.display = 'none';
+    }
+
+    function guncellee() {
+      document.getElementById('update-form-container').style.display = 'block';
+      document.getElementById('table-container').innerHTML = '';
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('delete-form-container').style.display = 'none'; 
+    }
+
+    async function hastaaSill(event) {
+  // Formun varsayılan davranışını engelle, sayfanın yenilenmesini önle
+  event.preventDefault();
+  // Silinecek doktorun ID'sini formdan al
+  const hastaId = document.getElementById("hastaId").value;
+  try {
+    // Doktoru silmek için sunucuya istek gönder (ajax cagrisi) + fetch api
+    const isteek = await fetch(`/hastasil/${hastaId}`, {
+      method: "DELETE"
+    });
+    // Sunucudan gelen yanıtı metin olarak al
+    const yaniitt = await isteek.text();
+    // Kullanıcıya sunucudan dönen yanıtı göster
+    alert(yaniitt);
+  } catch (error) {
+    // Hata durumunda hatayı konsola yazdır ve kullanıcıya bir hata mesajı göster
+    console.error('Hasta silinirken bir hata oluştu:', error);
+    alert('Hasta silinirken bir hata oluştu. Lütfen tekrar deneyin.');
+  }
+}
+
+
+   
+
+  </script>
+</body>
+</html>

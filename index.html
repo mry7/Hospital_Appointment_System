@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hastane Sistemi</title>
+   
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+   <!-- header section starts -->
+   <header class="header fixed-top">
+
+      <div class="containerheader">
+            <nav class="nav">
+               <a href="#home">Home</a>
+               <a href="#menu">Hizmetlerimiz</a>
+               <a href="#gallery">Hemen Dene</a>
+               <a href="#reviews">Yorumlar</a> 
+            </nav>
+      </div>
+
+   </header>
+   <!-- header section ends -->
+
+   <!-- home section starts  -->
+   <section class="home" id="home">
+      <div class="container">
+         <span>Sağlıklı Yaşam</span>
+         <h3>Güne sağlıklı bir egzersizle başla !</h3>
+         <a href="./login/index.html" class="link-btn">Hemen Başla</a>
+      </div>
+   </section>
+   <!-- home section ends -->
+
+   <!-- menu section starts  -->
+   <section class="menu" id="menu">
+      <h1 class="heading"> Hizmetlerimiz </h1>
+      <div class="container box-container">
+       
+         <div class="box">
+            <h3>Doktor İşlemleri</h3>
+            <p>Doktor ekleme, doktor silme, doktor güncelleme, doktorları listeleme, doktor randevusu sorgulama</p>
+         </div>
+         <div class="box">
+            <h3>Hasta İŞlemleri</h3>
+            <p>Hasta ekleme, hasta silme, hasta güncelleme, hastaları listeleme, hasta bilgisi sorgulama, hasta randevusu sorgulama, hasta raporu sorgulama</p>
+         </div>
+         <div class="box">
+            <h3>Randevu İŞlemleri</h3>
+            <p>Randevu ekleme, randevu silme, randevu güncelleme, randevuları listeleme, doktor randevusu sorgulama, hasta randevusu sorgulama</p>
+         </div>
+         <div class="box">
+            <h3>Rapor İşlemleri</h3>
+            <p>Rapor ekleme, rapor silme, rapor güncelleme, raporları listeleme, rapor sorgulama</p>
+         </div>
+
+
+         <div class="box">
+            <h3>Beden Kütle İndeksi Hesaplama Sistemi</h3>
+            <p>Kullanıcı düzenli olarak boy ve kilo değerleirni girerek beden kütle indeksini hesaplayabilir. Dilerse ayrıntılı bilgiye de sahip olabilir. Böylece ideal kilo hedeflerine adım adım yaklaşabilir.</p>
+         </div>
+         <div class="box">
+            <h3>Egzersiz Çalışmaları</h3>
+            <p>Kullanıcı çeşitli egzersiz hareketlerinden ona uygun olan hareketleri seçer. Her bir hareketinin kartında, egzersizle alakalı bilgiler ve nasıl yapıldığına dair ipuçları bulunuyor.</p>
+         </div>
+      </div>
+   </section>
+   <!-- menu section ends -->
+
+   <!-- gallery section starts  -->
+   <section class="gallery" id="gallery">
+      <h1 class="heading"> Hemen Dene </h1>
+      <div class="box-container container">
+         <div class="box">
+            <img src="images/OQ6UTW0.jpg">
+            <div class="content">
+               <h3>Doktor İşlemleri</h3>
+               <p>Doktor ekleme, doktor silme, doktor güncelleme, doktorları listeleme</p>
+               <button class="link-btn" onclick="openPort(3002, 'doktor.html')">Şimdi Dene</button>
+            </div>
+         </div>
+         <div class="box">
+            <img src="images/3668104.jpg">
+            <div class="content">
+               <h3>Hasta İşlemleri</h3>
+               <p>Hasta ekleme, hasta silme, hasta güncelleme, hastaları listeleme</p>
+               <button class="link-btn" onclick="openPort(3003, 'hasta.html')">Şimdi Dene</button>
+            </div>
+         </div>
+         <div class="box">
+            <img src="images/3925869.jpg">
+            <div class="content">
+               <h3>Randevu İşlemleri</h3>
+               <p>Randevu ekleme, randevu silme, randevu güncelleme, randevuları listeleme</p>
+               <button class="link-btn" onclick="openPort(3004, 'randevu.html')">Şimdi Dene</button>
+            </div>
+         </div>
+         <div class="box">
+            <img src="images/paper_2.jpg">
+            <div class="content">
+               <h3>Rapor İşlemleri</h3>
+               <p>Rapor ekleme, rapor silme, rapor güncelleme, raporları listeleme</p>
+               <button class="link-btn" onclick="openPort(3005, 'rapor.html')">Şimdi Dene</button>
+            </div>
+         </div>
+         <div class="box">
+            <img src="images/5106930.jpg">
+            <div class="content">
+               <h3>Arama İşlemleri</h3>
+               <p>Hasta bilgisi sorgulama, hasta randevusu sorgulama, doktor randevusu sorgulama,rapor sorgulama</p>
+               <button class="link-btn" onclick="openPort(3007, 'ara.html')">Şimdi Dene</button>
+            </div>
+         </div>
+
+      </div>
+   </section>
+   <!-- gallery section ends -->
+
+   <!-- gallery2 section starts  -->
+   <section class="gallery" id="gallery">
+      <h1 class="heading"> Ekstra Hizmetlerimiz </h1>
+      <div class="box-container container">
+         <div class="box">
+            <img src="images/bmi.jpg">
+            <div class="content">
+               <h3>Beden Kütle İndeksi Hesaplama Sistemi</h3>
+               <p>İdeal kilo ve sağlıklı vücut hayallerine artık çok daha yakınsın!</p>
+               <a href="./BMI_Calculator/index.html" class="link-btn">Şimdi Dene</a>
+            </div>
+         </div>
+         <div class="box">
+            <img src="images/workout.jpg">
+            <div class="content">
+               <h3>Egzersiz Çalışmaları</h3>
+               <p>Kişiye özel egzersiz çalışmaları ve daha fazlası!</p>
+               <a href="./Fitness/index.html" class="link-btn">Şimdi Dene</a>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- gallery2 section ends -->
+   
+   <!-- experts section starts  -->
+   <section class="reviews" id="reviews">
+      <h1 class="heading">Yorumlar</h1>
+      <div class="container6">
+         <div class="wrapper">
+           <div class="card">
+             <div class="card__side card__side--front">
+               <div class="card__image">
+                 <img src="images/experts/expert1.jpg" class="card__image--round" />
+               </div>
+               <div class="card__username">
+                  Seçil Kaya
+               </div>
+               <div class="card__features">
+                 <ul>
+                   <li>Plastik Cerrahi</li>
+                 </ul>
+               </div>
+             </div>
+             <div class="card__side card__side--back">
+               <p class="card__text card__text--small">DR.Seçil Kara'ya plastik cerrahi alanında muayene oldum ve çok memnun kaldım. Profesyonelliği ve ilgisi sayesinde tedavi sürecim çok rahat geçti. Kendisine çok teşekkür ederim.
+
+               </p>
+               </div>
+           </div>
+         </div>
+         <div class="wrapper">
+           <div class="card">
+             <div class="card__side card__side--front">
+               <div class="card__image">
+                 <img src="images/pic-2.png" class="card__image--round" />
+               </div>
+               <div class="card__username">
+                  Özlem Kılıç
+               </div>
+               <div class="card__features">
+                 <ul>
+                   <li> Nöroloji </li>
+                 </ul>
+               </div>
+             </div>
+             <div class="card__side card__side--back">
+               <p class="card__text card__text--small">Dr. Özlem Kılıç’a nöroloji bölümünde muayene oldum ve çok memnun kaldım. Hem bilgisi hem de yaklaşımı ile bana güven verdi. Tedavi sürecimdeki desteği için kendisine çok teşekkür ederim.</p>
+             </div>
+           </div>
+         </div>
+         <div class="wrapper">
+           <div class="card">
+             <div class="card__side card__side--front">
+               <div class="card__image">
+                 <img src="./images/experts/expert2.jpg" class="card__image--round" />
+               </div>
+               <div class="card__username">
+                  Victoria Velasquez
+               </div>
+               <div class="card__features">
+                 <ul>
+                   <li>Kardiyoloji</li>
+                 </ul>
+               </div>
+             </div>
+             <div class="card__side card__side--back">
+               <p class="card__text card__text--small">Dr. Victoria Velasquez'e kardiyoloji bölümünde muayene oldum ve son derece memnun kaldım. Hastalığımın tanısında gösterdiği titizlik ve tedavi sürecindeki ilgisi ile bana büyük güven verdi. Profesyonelliği ve samimi yaklaşımı sayesinde kendimi çok rahat hissettim. Dr. Velasquez'e içten teşekkürlerimi sunuyorum.
+
+               </p>
+             </div>
+           </div>
+         </div>
+       </div>
+   </section>
+   <!-- experts section ends -->
+
+   <!-- footer section starts  -->
+   <section class="footer">
+      <nav class="footer">
+         <a href="#home">Home</a>
+         <a href="#menu">Hizmetlerimiz</a>
+         <a href="#gallery">Hemen Dene</a>
+         <a href="#reviews">Yorumlar</a>         
+      </nav>
+      <p class="credit"> created by <span>Meryem Paşaoğlu</span> | all rights reserved! </p>
+   </section>
+   <!-- footer section ends -->
+
+   <script>
+      function openPort(port, page) {
+          const url = `http://localhost:${port}/${page}`;
+          window.open(url, '_blank'); // Yeni sekmede aç
+      }
+   </script>
+
+</body>
+
+</html>

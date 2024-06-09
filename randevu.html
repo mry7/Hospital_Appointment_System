@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Randevu</title>
+     <link rel="stylesheet" type="text/css" href="randevu.css">
+     
+</head>
+<body>
+  <div id="dashboard">
+    <button onclick="randevuu()">Randevu Al</button>
+    <button onclick="listelee(0)">Randevu Listele</button>
+    <button onclick="siilll()">Randevu Sil</button> 
+    <button onclick="guncellee()">Randevu Güncelle</button>
+  </div>
+
+
+
+  <div class="form-container" id="delete-form-container" style="display:none;">
+    <h1>Randevu Sil</h1>
+    <form id="randevuSilForm">
+      <label for="randevuId">Randevu ID:</label>
+      <input type="text" id="randevuId" name="randevuId" required><br>
+      <button onclick="randevuuSill(event)">Sil</button>
+    </form>
+  </div>
+
+
+  <div class="form-container" id="update-form-container" style="display:none;">
+    <h1>Randevu Güncelle</h1>
+    <form id="updateForm" action="/update" method="POST">
+        <label for="randevuid">Randevu ID:</label>
+        <input type="text" id="randevuid" name="randevuid"><br><br>
+
+        <label for="randevutarihi">Randevu Tarihi:</label>
+        <input type="date" id="randevutarihi" name="randevutarihi"><br><br>
+
+        <label for="randevusaati">Randevu Saati:</label>
+        <input type="time" id="randevusaati" name="randevusaati"><br><br>
+
+        <label for="hastaid">Hasta ID:</label>
+        <input type="text" id="hastaid" name="hastaid"><br><br>
+
+        <label for="doktorid">Doktor ID:</label>
+        <input type="text" id="doktorid" name="doktorid"><br><br>
+
+      <button type="submit">Güncelle</button>
+      
+    </form>
+  </div>
+
+
+  <div class="form-container" id="randevu-form-container" style="display:none;">
+    <h1>Randevu Al</h1>
+    <form action="/randevual" method="post">   
+      <label for="randevuid">Randevu ID:</label>
+      <input type="text" id="randevuid" name="randevuid" required><br>
+      <label for="randevutarihi">Randevu Tarihi:</label>
+      <input type="date" id="randevutarihi" name="randevutarihi" required><br>
+      <label for="randevusaati">Randevu Saati:</label>
+      <input type="time" id="randevusaati" name="randevusaati" required><br>
+      <label for="hastaid">Hasta ID:</label>
+      <input type="text" id="hastaid" name="hastaid" required><br>
+      <label for="doktorid">Doktor ID:</label>
+      <input type="text" id="doktorid" name="doktorid" required><br>
+      <button type="submit">Randevu Al</button>
+    </form>
+  </div>
+
+  <div class="table-container" id="table-container">
+    <!-- Burada doktorlar tablosu olacak -->
+  </div>
+
+
+  <script>
+    async function listelee() {
+      const yaniitt = await fetch('/randevular');
+      const html = await yaniitt.text();
+      document.getElementById('table-container').innerHTML = html;
+      document.getElementById('delete-form-container').style.display = 'none'; 
+      document.getElementById('update-form-container').style.display = 'none';
+      document.getElementById('randevu-form-container').style.display = 'none';
+
+    }
+
+    function siilll() {
+      document.getElementById('delete-form-container').style.display = 'block';
+      document.getElementById('table-container').innerHTML = '';
+      document.getElementById('update-form-container').style.display = 'none';
+      document.getElementById('randevu-form-container').style.display = 'none';
+
+    }
+
+    function guncellee() {
+      document.getElementById('update-form-container').style.display = 'block';
+      document.getElementById('table-container').innerHTML = '';
+      document.getElementById('delete-form-container').style.display = 'none'; 
+      document.getElementById('randevu-form-container').style.display = 'none';
+
+    }
+
+    function randevuu() {
+      document.getElementById('randevu-form-container').style.display = 'block';
+      document.getElementById('table-container').innerHTML = '';
+      document.getElementById('delete-form-container').style.display = 'none'; 
+      document.getElementById('update-form-container').style.display = 'none';
+    }
+
+
+    async function randevuuSill(event) {
+  // Formun varsayılan davranışını engelle, sayfanın yenilenmesini önle
+  event.preventDefault();
+  // Silinecek doktorun ID'sini formdan al
+  const randevuId = document.getElementById("randevuId").value;
+  try {
+    // Doktoru silmek için sunucuya istek gönder (ajax cagrisi) + fetch api
+    const isteek = await fetch(`/randevusil/${randevuId}`, {
+      method: "DELETE"
+    });
+    // Sunucudan gelen yanıtı metin olarak al
+    const yaniitt = await isteek.text();
+    // Kullanıcıya sunucudan dönen yanıtı göster
+    alert(yaniitt);
+  } catch (error) {
+    // Hata durumunda hatayı konsola yazdır ve kullanıcıya bir hata mesajı göster
+    console.error('Randevu silinirken bir hata oluştu:', error);
+    alert('Randevu silinirken bir hata oluştu. Lütfen tekrar deneyin.');
+  }
+}
+
+
+   
+
+  </script>
+</body>
+</html>

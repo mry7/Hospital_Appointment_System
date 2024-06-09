@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f5f4cf;
+
+}
+
+#dashboard {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 70px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    height: 100vh; /* Tüm ekran yüksekliği */
+}
+
+#dashboard button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f99ba1;
+    color: white;
+    text-align: left; /* Sol hizalama */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#dashboard button:hover {
+    background-color: #f99ba1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.form-container {
+    flex: 1; /* Kalan alanı kaplar */
+    padding: 20px;
+    display: none; /* Varsayılan olarak gizle */
+    overflow-y: auto; /* İçeriği kaydırmak için */
+}
+
+.table-container {
+    padding: 20px;
+    overflow-x: auto; /* Yatay kaydırma için */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+button[type="button"], button[type="submit"] {
+    background-color: #f99ba1;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="button"]:hover, button[type="submit"]:hover {
+    background-color: #f99ba1;
+}

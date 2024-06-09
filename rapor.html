@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapor</title>
+     <link rel="stylesheet" type="text/css" href="rapor.css">
+     
+</head>
+<body>
+  <div id="dashboard">
+    <button onclick="eklee()">Rapor Ekle</button>
+    <button onclick="listelee(0)">Rapor Listele</button>
+    <button onclick="siilll()">Rapor Sil</button> 
+    <button onclick="guncellee()">Rapor Güncelle</button>
+  </div>
+
+
+  <div class="form-container" id="form-container">
+    <h1>Rapor Ekle</h1>
+    <form action="/raporekle" method="post">
+      <label for="raporid">Rapor ID:</label>
+      <input type="text" id="raporid" name="raporid" required><br>
+      <label for="raportarihi">Rapor Tarihi:</label>
+      <input type="date" id="raportarihi" name="raportarihi" required><br>
+      <label for="raporicerigi">Rapor İçeriği</label>
+      <input type="text" id="raporicerigi" name="raporicerigi" required><br>
+      <label for="hastaid">Hasta ID:</label>
+      <input type="text" id="hastaid" name="hastaid" required><br>
+   
+      <button type="submit">Ekle</button>
+    </form>
+  </div>
+
+
+  <div class="form-container" id="delete-form-container" style="display:none;">
+    <h1>Rapor Sil</h1>
+    <form id="raporSilForm">
+      <label for="raporId">Rapor ID:</label>
+      <input type="text" id="raporId" name="raporId" required><br>
+      <button onclick="raporrSill(event)">Sil</button>
+    </form>
+  </div>
+
+
+  <div class="form-container" id="update-form-container" style="display:none;">
+    <h1>Rapor Güncelle</h1>
+    <form id="updateForm" action="/update" method="POST">
+        <label for="raporid">Rapor ID:</label>
+        <input type="text" id="raporid" name="raporid"><br><br>
+        <label for="raportarihi">Rapor Tarihi:</label>
+        <input type="date" id="raportarihi" name="raportarihi"><br><br>
+        <label for="raporicerigi">Rapor İçeriği</label>
+        <input type="text" id="raporicerigi" name="raporicerigi"><br><br>
+        <label for="hastaid">Hasta ID:</label>
+        <input type="text" id="hastaid" name="hastaid"><br><br>
+      <button type="submit">Güncelle</button>
+      
+    </form>
+  </div>
+
+
+  <div class="table-container" id="table-container">
+    <!-- Burada doktorlar tablosu olacak -->
+  </div>
+
+
+  <script>
+    async function listelee() {
+      const yaniitt = await fetch('/tibbiraporlar');
+      const html = await yaniitt.text();
+      document.getElementById('table-container').innerHTML = html;
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('delete-form-container').style.display = 'none'; 
+      document.getElementById('update-form-container').style.display = 'none';
+    }
+
+    function eklee() {
+      document.getElementById('form-container').style.display = 'block';
+      document.getElementById('table-container').innerHTML = '';
+      document.getElementById('delete-form-container').style.display = 'none'; 
+      document.getElementById('update-form-container').style.display = 'none';
+    }
+
+    function siilll() {
+      document.getElementById('delete-form-container').style.display = 'block';
+      document.getElementById('table-container').innerHTML = '';
+      document.getElementById('form-container').style.display = 'none'; 
+      document.getElementById('update-form-container').style.display = 'none';
+    }
+
+    function guncellee() {
+      document.getElementById('update-form-container').style.display = 'block';
+      document.getElementById('table-container').innerHTML = '';
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('delete-form-container').style.display = 'none'; 
+    }
+
+    async function raporrSill(event) {
+  // Formun varsayılan davranışını engelle, sayfanın yenilenmesini önle
+  event.preventDefault();
+  // Silinecek doktorun ID'sini formdan al
+  const raporId = document.getElementById("raporId").value;
+  try {
+    // Doktoru silmek için sunucuya istek gönder (ajax cagrisi) + fetch api
+    const isteek = await fetch(`/raporsil/${raporId}`, {
+      method: "DELETE"
+    });
+    // Sunucudan gelen yanıtı metin olarak al
+    const yaniitt = await isteek.text();
+    // Kullanıcıya sunucudan dönen yanıtı göster
+    alert(yaniitt);
+  } catch (error) {
+    // Hata durumunda hatayı konsola yazdır ve kullanıcıya bir hata mesajı göster
+    console.error('Rapor silinirken bir hata oluştu:', error);
+    alert('Rapor silinirken bir hata oluştu. Lütfen tekrar deneyin.');
+  }
+}
+
+
+   
+
+  </script>
+</body>
+</html>
